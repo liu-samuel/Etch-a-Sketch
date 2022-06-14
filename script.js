@@ -1,18 +1,27 @@
-let rows = 4;
-let columns = 4;
 let container = document.getElementById("grid");
+let rows = prompt("How many rows? (Up to 64)");
+let columns = prompt("How many columns? (Up to 64)");
 
 for (i = 0; i < rows * columns; i++) {
     let cell = document.createElement("div");
     cell.classList.add("cell");
-    cell.id = i
     container.appendChild(cell);
-    cell.addEventListener("mouseover", () => {
+    cell.style.height = (500 / rows);
+    cell.style.width = (500 / columns);
+
+    cell.addEventListener("mouseenter", () => {
         cell.style.background = "red";
         console.log("div mouse over");
-    });
+    }); 
+
+    cell.addEventListener("mouseout", () => {
+        cell.style.background = "white";
+        console.log("div mouse out")
+    })
+
     cell.addEventListener("click", () => {
-        cell.style.background = randomColor();
+        color = randomColor();
+        cell.style.background = color;
         console.log("div clicked");
     });
 }
