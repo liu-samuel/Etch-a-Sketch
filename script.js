@@ -2,12 +2,15 @@ let container = document.getElementById("grid");
 let rows = prompt("How many rows? (Up to 64)");
 let columns = prompt("How many columns? (Up to 64)");
 
+let height = Math.floor(640 / rows);
+let width = Math.floor(640 / columns);
+
 for (i = 0; i < rows * columns; i++) {
     let cell = document.createElement("div");
     cell.classList.add("cell");
     container.appendChild(cell);
-    cell.style.height = (500 / rows);
-    cell.style.width = (500 / columns);
+    cell.style.height = String(height) + 'px';
+    cell.style.width = String(width) + 'px';
 
     cell.addEventListener("mouseenter", () => {
         cell.style.background = "red";
