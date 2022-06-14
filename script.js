@@ -6,19 +6,25 @@ for (i = 0; i < rows * columns; i++) {
     let cell = document.createElement("div");
     cell.classList.add("cell");
     cell.id = i
-    document.body.appendChild(cell);
-    cell.addEventListener('mouseover', mouseOver(cell.id));
-    cell.addEventListener('click', mouseClick(cell.id));
+    container.appendChild(cell);
+    cell.addEventListener("mouseover", () => {
+        cell.style.background = "red";
+        console.log("div mouse over");
+    });
+    cell.addEventListener("click", () => {
+        cell.style.background = randomColor();
+        console.log("div clicked");
+    });
 }
 
 
-function mouseOver(id) {
-    document.getElementsByClassName("cell")[id].style.background = "red";
+/* function mouseOver(id) {
+    
 }
 
 function mouseClick(id) {
-    document.getElementsByClassName("cell")[id].style.background = randomColor();
-}
+    
+} */
 
 function randomColor() {
     let maxVal = 0xFFFFFF
