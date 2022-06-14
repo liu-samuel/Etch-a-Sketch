@@ -1,13 +1,12 @@
 #grid {
-    width: 500px;
-    height: 500px;
+    width: 640px;
+    height: 640px;
     display: inline-block;
     flex: 1;
 }
 
 .cell, .row {
     border: 2px solid black;
-
     display: inline-block;
 }
 
