@@ -13,11 +13,11 @@ for (i = 0; i < rows * columns; i++) {
 
 
 function mouseOver(id) {
-    document.getElementsByClassName("cell")[id].style.color = "red";
+    document.getElementsByClassName("cell")[id].style.background = "red";
 }
 
 function mouseClick(id) {
-    document.getElementsByClassName("cell")[id].style.color = randomColor();
+    document.getElementsByClassName("cell")[id].style.background = randomColor();
 }
 
 function randomColor() {
