@@ -18,7 +18,7 @@ function randomColor() {
 
 restart.addEventListener("click", () => {
     for (let cellRestart of cells) {
-        cellRestart.style.backgroundColor = "white";
+        cellRestart.style.backgroundColor = "lightblue";
     }
 })
 
@@ -70,6 +70,7 @@ function createGrid(rows, columns) {
         container.appendChild(cell);
         cell.style.height = String(cellHeight) + 'px';
         cell.style.width = String(cellWidth) + 'px';
+        cell.style.color = "lightblue";
     
         addMouseOver(cell);
         // addMouseOut(cell);
