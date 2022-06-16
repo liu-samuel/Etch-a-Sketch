@@ -8,14 +8,13 @@ body {
     height: 640px;
     display: inline-block;
     flex: 1;
-    margin: 0 auto ;
+    margin: 0 auto;
+    font-size: 0px;
 }
 
 .cell, .row {
     border: 1px solid black;
     display: inline-block;
-    margin-top: -2px;
-    margin-bottom: -2px;
 }
 
 /* .cell:hover, .row:hover{
