@@ -1,12 +1,16 @@
 let change = document.querySelector(".change");
 let container = document.getElementById("grid");
 let restart = document.querySelector('.restart');
+let erase = document.querySelector('.erase');
+let draw = document.querySelector('.draw');
 let cells = document.getElementsByClassName("cell");
 
 let numRows = 16;
 let numColumns = 16;
 let height = parseInt(container.style.height);
 let width = parseInt(container.style.width);
+
+let drawing = true;
 
 createGrid(numRows, numColumns);
 
@@ -18,7 +22,7 @@ function randomColor() {
 
 restart.addEventListener("click", () => {
     for (let cellRestart of cells) {
-        cellRestart.style.backgroundColor = "lightblue";
+        cellRestart.style.backgroundColor = "beige";
     }
 })
 
@@ -45,7 +49,7 @@ function addMouseOver(cell) {
 
 function addMouseOut(cell) {
     cell.addEventListener("mouseout", () => {
-        cell.style.background = "lightblue";
+        cell.style.background = "beige";
         console.log("div mouse out")
     });
     return cell;
@@ -60,6 +64,28 @@ function addMouseClick(cell) {
     return cell;
 }
 
+erase.addEventListener("click",  () => {
+    for (let cell of cells) {
+        let clone = cell.cloneNode(true);
+        addEraseOver(clone);
+    }
+});
+
+draw.addEventListener("click",  () => {
+    for (let cell of cells) {
+        let clone = cell.cloneNode(true);
+        addMouseClick(clone);
+        addMouseOver(clone);
+    }
+    
+});
+
+function addEraseOver(cell) {
+    cell.addEventListener("mouseover", () => {
+        cell.style.backgroundColor = "beige";
+    })
+}
+
 function createGrid(rows, columns) {
     let cellHeight = (640 - numColumns * 2) / numRows;
     let cellWidth = (640 - numRows * 2) / numColumns;
@@ -70,7 +96,7 @@ function createGrid(rows, columns) {
         container.appendChild(cell);
         cell.style.height = String(cellHeight) + 'px';
         cell.style.width = String(cellWidth) + 'px';
-        cell.style.color = "lightblue";
+        cell.style.backgroundColor = "beige";
     
         addMouseOver(cell);
         // addMouseOut(cell);
