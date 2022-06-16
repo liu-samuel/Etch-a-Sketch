@@ -1,6 +1,21 @@
 body {
     display: flex;
     flex-direction: column;
+    background-color: lightblue;
+}
+
+.title {
+    text-align: center;
+}
+
+button {
+    background-color: black;
+    color: red;
+    width: 100px;
+    height: auto;
+    margin-left: 48%;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }
 
 #grid {

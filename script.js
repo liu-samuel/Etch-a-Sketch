@@ -8,23 +8,11 @@ let numColumns = 16;
 let height = parseInt(container.style.height);
 let width = parseInt(container.style.width);
 
-let cellHeight = (640 - numColumns * 2) / numRows;
-let cellWidth = (640 - numRows * 2) / numColumns;
+createGrid(numRows, numColumns);
 
-for (i = 0; i < numRows * numColumns; i++) {
-    let cell = document.createElement("div");
-    cell.classList.add("cell");
-    container.appendChild(cell);
-    cell.style.height = String(cellHeight) + 'px';
-    cell.style.width = String(cellWidth) + 'px';
-
-    // addMouseOver(cell);
-    addMouseClick(cell);
-    // addMouseOut(cell);
-}
 
 function randomColor() {
-    let randomColor = Math.floor(Math.random()*16777215).toString(16);
+    let randomColor = '#' + (Math.random().toString(16) + "000000").substring(2,8)
     return randomColor;
 }
 
@@ -40,29 +28,16 @@ change.addEventListener("click", () => {
     numRows = parseInt(rows);
     numColumns = parseInt(columns);
 
-    cellHeight = (640 - numColumns * 2) / rows;
-    cellWidth = (640 - numRows * 2) / columns;
-
     while (cells[0]) {
         container.removeChild(cells[0]);
     }
 
-    for (i = 0; i < rows * columns; i++) {
-        let cell = document.createElement("div");
-        cell.classList.add("cell");
-        container.appendChild(cell);
-        cell.style.height = String(cellHeight) + 'px';
-        cell.style.width = String(cellWidth) + 'px';
-
-        // addMouseOver(cell);
-        addMouseClick(cell);
-        // addMouseOut(cell);
-    }
+    createGrid(numRows, numColumns)
 })
 
 function addMouseOver(cell) {
     cell.addEventListener("mouseover", () => {
-        cell.style.backgroundColor = "red";
+        cell.style.backgroundColor = "grey";
         console.log("div mouse over"); 
     });
     return cell;
@@ -70,7 +45,7 @@ function addMouseOver(cell) {
 
 function addMouseOut(cell) {
     cell.addEventListener("mouseout", () => {
-        cell.style.background = "white";
+        cell.style.background = "lightblue";
         console.log("div mouse out")
     });
     return cell;
@@ -83,4 +58,21 @@ function addMouseClick(cell) {
         console.log("div clicked");
     });
     return cell;
+}
+
+function createGrid(rows, columns) {
+    let cellHeight = (640 - numColumns * 2) / numRows;
+    let cellWidth = (640 - numRows * 2) / numColumns;
+
+    for (i = 0; i < rows * columns; i++) {
+        let cell = document.createElement("div");
+        cell.classList.add("cell");
+        container.appendChild(cell);
+        cell.style.height = String(cellHeight) + 'px';
+        cell.style.width = String(cellWidth) + 'px';
+    
+        addMouseOver(cell);
+        addMouseClick(cell);
+        addMouseOut(cell);
+    }
 }
