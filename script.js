@@ -72,7 +72,8 @@ function createGrid(rows, columns) {
         cell.style.width = String(cellWidth) + 'px';
     
         addMouseOver(cell);
+        // addMouseOut(cell);
         addMouseClick(cell);
-        addMouseOut(cell);
+        
     }
 }
