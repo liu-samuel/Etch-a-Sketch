@@ -66,16 +66,17 @@ function addMouseClick(cell) {
 
 erase.addEventListener("click",  () => {
     for (let cell of cells) {
-        let clone = cell.cloneNode(true);
-        addEraseOver(clone);
+        cell.removeEventListener("click", addMouseClick);
+        cell.removeEventListener("mouseover", addMouseOver);
+        addEraseOver(cell);
     }
 });
 
 draw.addEventListener("click",  () => {
     for (let cell of cells) {
-        let clone = cell.cloneNode(true);
-        addMouseClick(clone);
-        addMouseOver(clone);
+        cell.removeEventListener("mouseover", addEraseOver);
+        addMouseClick(cell);
+        addMouseOver(cell);
     }
     
 });
@@ -83,6 +84,7 @@ draw.addEventListener("click",  () => {
 function addEraseOver(cell) {
     cell.addEventListener("mouseover", () => {
         cell.style.backgroundColor = "beige";
+        console.log("erasing");
     })
 }
 
